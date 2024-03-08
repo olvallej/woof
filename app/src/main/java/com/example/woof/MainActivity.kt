@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    Greeting("Android")
+                    WoofApp()
                 }
             }
         }
@@ -144,10 +144,17 @@ fun DogInformation(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun GreetingPreview() {
-    WoofTheme {
-        Greeting("Android")
+fun WoofPreview() {
+    WoofTheme(darkTheme = false) {
+        WoofApp()
+    }
+}
+@Preview
+@Composable
+fun WoofDarkThemePreview() {
+    WoofTheme(darkTheme = true) {
+        WoofApp()
     }
 }
