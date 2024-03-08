@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.woof.data.Dog
+import com.example.woof.data.dogs
 import com.example.woof.ui.theme.WoofTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +52,20 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun WoofApp() {
-
+    Scaffold(
+        topBar = {
+            WoofTopAppBar()
+        }
+    ) { it ->
+        LazyColumn(contentPadding = it) {
+            items(dogs) {
+                DogItem(
+                    dog = it,
+                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                )
+            }
+        }
+    }
 }
 @Composable
 fun DogItem(
